@@ -1,0 +1,14 @@
+*.blade.php linguist-language=PHP
+resources/css/* linguist-language=CSS
+resources/js/* linguist-language=JavaScript
+* text=auto eol=lf
+
+*.blade.php diff=html
+*.css diff=css
+*.html diff=html
+*.md diff=markdown
+*.php diff=php
+
+/.github export-ignore
+CHANGELOG.md export-ignore
+.styleci.yml export-ignore
