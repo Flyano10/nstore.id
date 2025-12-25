@@ -83,8 +83,9 @@
                 </div>
             </div>
 
-            <div class="overflow-hidden" id="collection-track">
-                <div class="flex gap-6 transition-transform duration-500" data-collection-items>
+            <div class="relative">
+                <div class="overflow-x-auto pb-6 -mx-6 px-6 custom-scrollbar scroll-smooth" id="collection-track">
+                    <div class="flex gap-6 w-max" data-collection-items>
                     @forelse ($featuredProducts as $product)
                         <article class="group flex min-w-[260px] max-w-[320px] flex-1 flex-col overflow-hidden rounded-3xl border border-brand-black/5 bg-brand-white shadow-sm shadow-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl md:min-w-[300px]" data-aos="fade-up" data-aos-delay="{{ 150 + ($loop->index * 80) }}">
                             <div class="relative aspect-[4/3] overflow-hidden bg-brand-gray/60">
@@ -111,7 +112,9 @@
                             Produk belum tersedia di katalog. Tambahkan produk melalui panel admin untuk menampilkan koleksi terbaru di sini.
                         </div>
                     @endforelse
+                    </div>
                 </div>
+                <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
             </div>
         </div>
     </section>

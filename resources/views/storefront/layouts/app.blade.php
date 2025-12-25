@@ -197,6 +197,7 @@
         </div>
 
         <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+        @vite('resources/js/collections.js')
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 if (typeof AOS !== 'undefined') {

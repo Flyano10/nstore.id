@@ -4,100 +4,106 @@
 
 # Nstore Storefront
 
-_Single page storefront sederhana yang saya bangun untuk showcase koleksi sneakers Nike dengan sentuhan modern._
+Landing page buat jualan sneakers Nike. Simpel tapi tetep keliatan modern.
 
 </div>
 
-## Ringkasan Proyek
+## Apa ini
 
-Saya membuat proyek ini untuk mendemokan pengalaman landing page e-commerce yang rapih namun tetap gampang di-maintain. Fokus utama ada di hero dinamis, list produk yang langsung narik data dari database, dan interaksi kecil-kecilan (scroll animation, slider, dsb) supaya presentasinya enak ditonton.
+Bikin storefront sederhana buat showcase koleksi sneakers. Fiturnya ga ribet - hero yang dinamis, list produk langsung dari database, plus beberapa animasi kecil biar ga boring aja.
 
-## Fitur Unggulan
+## Yang ada di dalemnya
 
-- **Hero Section Dinamis** – otomatis menampilkan produk paling baru dengan badge “New Release”, CTA langsung ke detail, plus rotasi fade setiap 6 detik.
-- **Highlight Minggu Ini** – 3 produk terkurasi dengan deskripsi singkat dan tombol detail.
-- **Koleksi Terbaru** – slider horizontal dengan tombol navigasi berada di samping “View All”.
-- **Best Seller & About Section** – menampilkan USP brand dan alasan kenapa harus belanja di Nstore.
-- **Footer baru** – nuansa hitam dengan swoosh, social links, kontak support, dan form newsletter.
-- **Navbar responsif** – tombol “Menu” khusus mobile dengan panel blur yang bisa ditutup lewat ESC/responsive resize.
-- **Admin Upload** – di dashboard admin saya sudah ubah supaya gambar produk bisa diupload langsung, urutan bisa diatur, dan ada preview.
-- **AOS Animation** – satu kali setup, semua section yang saya tandai animasi saat discroll (dan bisa muncul lagi kalau discroll balik).
+**Hero Section**
+- Nampil produk paling baru otomatis dengan badge "New Release"
+- Auto rotate tiap 6 detik
+- CTA langsung ke detail produk
 
-## Stack yang Dipakai
+**Highlight & Koleksi**
+- 3 produk pilihan minggu ini
+- Slider horizontal buat koleksi terbaru (ada tombol prev/next)
+- Section best seller
+
+**UI Stuff**
+- Navbar responsive, mobile menu pake panel blur (bisa tutup pake ESC)
+- Footer hitam dengan swoosh, social links, sama form newsletter
+- AOS animation pas scroll
+
+**Admin Panel**
+- Upload gambar produk langsung
+- Atur urutan produk
+- Preview sebelum publish
+
+## Tech
 
 - Laravel 10
-- Blade + Tailwind (utility custom di `resources/css/app.css`)
-- Vite untuk asset bundling
-- Alpine/Vanilla JS ringan untuk slider & header
-- MySQL (atau database lain yang kompatibel dengan Laravel)
+- Blade + Tailwind
+- Vite
+- Alpine/Vanilla JS buat slider
+- MySQL
 
-## Prasyarat
+## Requirement
 
-Pastikan mesin sudah punya:
-
-- PHP >= 8.2
+- PHP 8.2 ke atas
 - Composer
-- Node.js >= 18 + npm
+- Node.js 18+ & npm
 - MySQL/MariaDB
-- Git
 
-## Cara Menjalankan Lokal
+## Setup
 
 ```bash
-# 1. Clone repo
+# Clone
 git clone https://github.com/<username>/nstore.git
 cd nstore
 
-# 2. Pasang dependency backend
+# Install
 composer install
+npm install
 
-# 3. Copy env & generate key
+# Environment
 cp .env.example .env
 php artisan key:generate
 
-# 4. Isi konfigurasi database di .env, lalu migrate (optional seed kalau mau)
+# Database (edit .env dulu)
 php artisan migrate
 
-# 5. Link storage supaya gambar produk kebaca publik
+# Storage link buat gambar
 php artisan storage:link
 
-# 6. Pasang dependency frontend
-npm install
-
-# 7. Jalanin build/dev server
-npm run dev    # untuk proses development
-# pada tab lain
+# Run
+npm run dev
+# tab lain:
 php artisan serve
 ```
 
-Setelah itu buka `http://127.0.0.1:8000` dan login ke admin (kalau belum ada user, bisa register manual dari form Auth) untuk mulai input produk.
+Buka `http://127.0.0.1:8000` dan login ke admin buat mulai masukin produk.
 
-## Struktur Folder Penting
+## Folder Penting
 
-- `app/Http/Controllers/Storefront/HomeController.php` – query data untuk landing page.
-- `resources/views/storefront/home.blade.php` – layout halaman utama.
-- `resources/views/storefront/layouts/app.blade.php` – header, footer, dan script global.
-- `resources/css/app.css` – utility kustom untuk header, footer, slider, dsb.
-- `resources/views/admin/products/_form.blade.php` – form upload gambar produk.
+```
+app/Http/Controllers/Storefront/HomeController.php  → query data landing
+resources/views/storefront/home.blade.php           → halaman utama
+resources/views/storefront/layouts/app.blade.php    → header, footer, script
+resources/css/app.css                               → custom utility
+resources/views/admin/products/_form.blade.php      → form upload produk
+```
 
-## Flow Demo (Quick Notes)
+## Demo Flow
 
-1. Buka landing page: highlight hero dinamis + badge.
-2. Scroll ke highlight panel → jelaskan setiap badge status.
-3. Geser slider “Koleksi Terbaru” pakai tombol di samping “View All”.
-4. Tunjukkan nav mobile (DevTools → responsive → tekan “Menu”).
-5. Tutup dengan footer baru + CTA newsletter.
+1. Landing page → hero dinamis + badge new release
+2. Scroll ke highlight → liat badge status
+3. Geser slider pake tombol samping "View All"
+4. Buka nav mobile (responsive mode)
+5. Footer + newsletter CTA
 
-## Pengembangan Lanjut
+## To-do Kedepan
 
-Hal-hal yang sedang saya pikirkan selanjutnya:
+- Login sosial biar checkout lebih cepet
+- Payment gateway (midtrans atau sejenisnya)
+- Dashboard stok realtime
 
-- Tambah login sosial/SSO biar checkout lebih cepat.
-- Integrasi midtrans / payment gateway langsung dari checkout.
-- Sistem stok realtime di admin (chart restock, dsb).
+Mau kontribusi? Fork aja terus bikin PR. Prefer kode yang rapi dan konsisten sama Tailwind custom yang udah ada.
 
-Kalau mau ikut kontribusi, feel free buat fork dan kirim PR. Saya tetep prefer gaya kode yang rapi dan tetap inline sama utility Tailwind custom.
+---
 
-–––
-
-Terima kasih sudah mampir ke repo ini. Boleh banget kirim masukan lewat issue atau langsung DM kalau punya ide baru! 💯
+Ada saran atau ide? Langsung aja bikin issue atau DM!
